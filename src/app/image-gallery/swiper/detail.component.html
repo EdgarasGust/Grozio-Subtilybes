@@ -1,0 +1,16 @@
+<swiper
+  #swiperRef
+  [slidesPerView]="1"
+  [spaceBetween]="10"
+  [centeredSlides]="true"
+  [keyboard]="{
+    enabled: true
+  }"
+  [navigation]="true"
+  [virtual]="true"
+  class="mySwiper"
+>
+  <ng-template swiperSlide *ngFor="let image of visibleImages; index as i">
+    <img [src]="image.url" alt="image: {{ i + 1 }}" class="img-fluid" />
+  </ng-template>
+</swiper>

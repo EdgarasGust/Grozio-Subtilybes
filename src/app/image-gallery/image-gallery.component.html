@@ -1,0 +1,100 @@
+<div class="background" *ngIf="!showModal">
+  <app-carousel></app-carousel>
+  <div class="container section-padding">
+    <div class="text-center">
+      <div ngbDropdown placement="top-start" class="d-inline-block">
+        <button
+          id="dropdown"
+          ngbDropdownToggle
+          type="button"
+          class="btn btn-outline"
+          [class.active]="
+            filterBy == 'BKlasika' ||
+            filterBy == 'Hibridas' ||
+            filterBy == 'Volume' ||
+            filterBy == 'Kim'
+          "
+        >
+          Blakstienos
+        </button>
+        <div class="dropdown" ngbDropdownMenu aria-labelledby="dropdown">
+          <button ngbDropdownItem type="button" (click)="filterBy = 'BKlasika'">
+            Klasikinis Priauginimas
+          </button>
+          <button ngbDropdownItem type="button" (click)="filterBy = 'Hibridas'">
+            Hibridinis Priauginimas
+          </button>
+          <button ngbDropdownItem type="button" (click)="filterBy = 'Volume'">
+            Volume Priauginimas
+          </button>
+          <button ngbDropdownItem type="button" (click)="filterBy = 'Kim'">
+            Kim Kardashian Priauginimas
+          </button>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline"
+        [class.active]="filterBy == 'Permanentas'"
+        (click)="filterBy = 'Permanentas'"
+      >
+        Ilgalaikis Makiažas
+      </button>
+    </div>
+
+    <div class="text-center mb-5 mt-1">
+      <button
+        type="button"
+        class="btn btn-outline"
+        [class.active]="filterBy == 'Laminavimas'"
+        (click)="filterBy = 'Laminavimas'"
+      >
+        Laminavimas
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-outline"
+        [class.active]="filterBy == 'Antakiai'"
+        (click)="filterBy = 'Antakiai'"
+      >
+        Antakių Dizainas
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-outline"
+        [class.active]="filterBy == 'Depiliacija'"
+        (click)="filterBy = 'Depiliacija'"
+      >
+        Depiliacija
+      </button>
+    </div>
+    <div class="row">
+      <ul>
+        <li
+          *ngFor="
+            let image of visibleImages | imageFilter: filterBy;
+            index as i
+          "
+        >
+          <img (click)="show(i)" [src]="image.url" class="card-img-top" />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="showModal">
+  <div class="backdrop-image">
+    <app-swiper
+      [visibleImages]="filteredImages"
+      [index]="index"
+      (showModal)="hide()"
+    ></app-swiper>
+  </div>
+  <div class="backdrop" (click)="hide()">
+    <span class="close" (click)="hide()">&times;</span>
+  </div>
+</div>

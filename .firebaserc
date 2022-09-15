@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "subtilusgrozis-f6916": {
+      "hosting": {
+        "subtilusGrozis": [
+          "subtilusgrozis-f6916"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "subtilusgrozis-f6916"
+  }
+}

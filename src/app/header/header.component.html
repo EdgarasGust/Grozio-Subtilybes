@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg md-3">
+    <div class="container positio" [@fadeSlideInOut]>
+      <a class="navbar-brand anime" href="#">
+        <img
+          class="d-inline-block align-top"
+          src="../../assets/logoWomentLeft.png"
+          alt=""
+          width="200"
+          height="50"
+        />
+      </a>
+
+      <button
+        class="menu-button"
+        [ngClass]="{ active: collapsed === false }"
+        type="button"
+        (click)="collapsed = !collapsed"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div
+        [ngbCollapse]="collapsed"
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item anime">
+            <a
+              class="nav-link active"
+              (click)="collapsed = true"
+              aria-current="page"
+              routerLink="/home"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Pagrindinis</a
+            >
+          </li>
+          <li class="nav-item anime">
+            <a
+              class="nav-link"
+              (click)="collapsed = true"
+              routerLink="/about-me"
+              routerLinkActive="active"
+              >Apie Mane</a
+            >
+          </li>
+          <li class="nav-item anime">
+            <a
+              class="nav-link"
+              (click)="collapsed = true"
+              routerLink="/services"
+              routerLinkActive="active"
+              >Paslaugos</a
+            >
+          </li>
+          <li class="nav-item anime">
+            <a
+              class="nav-link"
+              (click)="collapsed = true"
+              routerLink="/cost"
+              routerLinkActive="active"
+              >Įkainiai</a
+            >
+          </li>
+          <li class="nav-item anime">
+            <a
+              class="nav-link"
+              (click)="collapsed = true"
+              routerLink="/gallery"
+              routerLinkActive="active"
+              >Galerija</a
+            >
+          </li>
+          <li class="nav-item anime">
+            <a
+              class="nav-link"
+              (click)="collapsed = true"
+              routerLink="/contact"
+              routerLinkActive="active"
+              >Kontaktai</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

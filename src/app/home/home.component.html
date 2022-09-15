@@ -1,0 +1,44 @@
+<section class="container-fluid">
+  <div class="home-content row">
+    <div class="container">
+      <div class="col-xs-12">
+        <div class="row justify-content-center">
+          <div class="col-md-6 home_text" @slidingText>
+            <h1 class="pb-3" id="one">Sukurkime grožį kartu</h1>
+            <p id="one">
+              "Laimingos moters akys man suteikia motyvacijos nuolatos tobulėti,
+              kad galėčiau Jums teigti tik geriausias ir kokybiškiausias
+              paslaugas".
+            </p>
+            <div class="mb-2 mt-3" id="one">
+              <button
+                type="buttton"
+                routerLink="/contact"
+                class="btn btn-outline-success p-2"
+              >
+                Rezervacija
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 ord d-flex justify-content-center image_div"
+            @mainImage
+          >
+            <span class="circle" id="two"></span>
+
+            <img
+              class="img-fluid"
+              id="two"
+              style="z-index: 2"
+              src="../../assets/mainTest.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-section-one #anim></app-section-one>
+<app-section-two #anim></app-section-two>

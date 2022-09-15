@@ -1,0 +1,143 @@
+<div class="background-img"></div>
+<div class="container-fluid">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-md-6 height">
+        <h3>Mus Rasite</h3>
+        <p>
+          Mes esame isikure Kauno sirdyje, senamiestyje <br />
+          M.Dauksos Gate 16
+        </p>
+        <h3>Kontaktai Registracijai</h3>
+        <p>
+          <a href="mailto:baltrusyte.g@gmail.com">Siusti El laiska </a>
+        </p>
+        <p>
+          <a href="tel:+37060661833">Tel: +37060661833</a>
+        </p>
+        <p>
+          <a
+            target="blank"
+            href="https://www.google.lt/maps/place/M.+Dauk%C5%A1os+g.+16,+Kaunas+44287/@54.8967154,23.889189,17z/data=!3m1!4b1!4m5!3m4!1s0x46e7220fb47dd991:0xa2995b633bd19fbb!8m2!3d54.8967154!4d23.8913777"
+            >Adresas: M.Dauksos g. 16, Kaunas</a
+          >
+        </p>
+
+        <a
+          href="https://www.facebook.com/profile.php?id=100021914182057"
+          class="pe-1"
+        >
+          <img
+            src="../../assets/facebook.svg"
+            alt="facbook icon"
+            width="30em"
+            height="30em"
+          />
+        </a>
+
+        <a href="https://www.instagram.com/gitanagustaitiene/" class="ps-1">
+          <img
+            src="../../assets/instagram.svg"
+            alt="instagram icon"
+            width="30em"
+            height="30em"
+          />
+        </a>
+        <hr />
+      </div>
+      <div class="col-md-6 form">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+          <div id="user-data">
+            <div class="form-group">
+              <label for="username">Vardas</label>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                formControlName="username"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Elektroninio pasto addresas</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="tel">Telefono numeris</label>
+              <input
+                type="tel"
+                id="tel"
+                class="form-control"
+                formControlName="tel"
+              />
+            </div>
+            <div class="form-group">
+              <label for="service">Kokia procedura jus domina?</label>
+              <select
+                id="service"
+                formControlName="service"
+                class="form-control"
+              >
+                <option value="blakstienos">Blakstienos</option>
+                <option value="ilgalaikis">Ilgalaikis Makiažas</option>
+                <option value="laminavimas">Laminavimas</option>
+              </select>
+            </div>
+            <div class="form-group mt-4">
+              <label for="questionService"
+                >Užduokite jus dominantį klausimą</label
+              >
+              <textarea
+                id="question"
+                cols="30"
+                rows="5"
+                class="form-control"
+                formControlName="question"
+              ></textarea>
+            </div>
+          </div>
+          <button
+            type="submit"
+            [disabled]="!signupForm.valid"
+            class="btn btn-outline-info mt-4"
+          >
+            Siūsti
+          </button>
+        </form>
+      </div>
+    </div>
+    <div *ngIf="submited">
+      <div class="popup">
+        <h3>Thank you for you message</h3>
+        <p>We will get back to you as soon as we can</p>
+        <button
+          class="btn btn-outline-success p-2"
+          (click)="onThankYouFormSubmition()"
+        >
+          Į pagrindinį puslapį
+        </button>
+      </div>
+      <div class="backdrop" (click)="onThankYouFormSubmition()"></div>
+    </div>
+  </div>
+</div>
+<!-- <div class="map__background">
+  <div id="map-responsive">
+    <iframe
+      class="responsive-iframe"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2294.353617261604!2d23.88918365213454!3d54.896715380236664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e7220fb47dd991%3A0xa2995b633bd19fbb!2sM.%20Dauk%C5%A1os%20g.%2016%2C%20Kaunas%2044287!5e0!3m2!1slt!2slt!4v1639581496850!5m2!1slt!2slt"
+      width="100%"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </div>
+</div> -->
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <agm-marker [latitude]="lat" [longitude]="lng"> > </agm-marker>
+</agm-map>
