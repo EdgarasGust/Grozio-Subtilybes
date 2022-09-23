@@ -16,8 +16,8 @@ import { ServicesComponent } from './services/services.component';
 import { WaxingComponent } from './services/waxing/waxing.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'about-me', component: AboutMeComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'permanent-makeup', component: PermanentComponent },
@@ -34,7 +34,13 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes, { useHash: true, initialNavigation: 'enabledBlocking' })],
+  imports: [
+    RouterModule.forRoot(appRoutes, {
+      useHash: true,
+      initialNavigation: 'enabledBlocking',
+      scrollPositionRestoration: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

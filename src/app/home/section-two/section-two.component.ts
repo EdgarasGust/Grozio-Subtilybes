@@ -21,7 +21,7 @@ import { IntersectionObserverService } from 'src/app/shared/IntersectionObserver
 @Component({
   selector: 'app-section-two',
   templateUrl: './section-two.component.html',
-  styleUrls: ['./section-two.component.css'],
+  styleUrls: ['./section-two.component.scss'],
   animations: [
     trigger('fadeIn', [
       state(

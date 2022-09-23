@@ -12,7 +12,7 @@ import { ContactService } from '../shared/contact.service';
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css'],
+  styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent implements OnInit {
   signupForm = new FormGroup({

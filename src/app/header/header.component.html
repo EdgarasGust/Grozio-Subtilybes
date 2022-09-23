@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg md-3">
-    <div class="container positio" [@fadeSlideInOut]>
+    <div class="container" [@fadeSlideInOut]>
       <a class="navbar-brand anime" href="#">
         <img
           class="d-inline-block align-top"
@@ -27,12 +27,22 @@
         id="navbarSupportedContent"
       >
         <ul class="navbar-nav mb-2 mb-lg-0">
+          <div class="visible">
+            <img
+              class="d-inline-block align-top"
+              src="../../assets/logoWomentLeft.png"
+              alt=""
+              width="200"
+              height="50"
+            />
+          </div>
+          <br />
           <li class="nav-item anime">
             <a
               class="nav-link active"
               (click)="collapsed = true"
               aria-current="page"
-              routerLink="/home"
+              routerLink="/"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
               >Pagrindinis</a
