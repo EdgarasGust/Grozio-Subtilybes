@@ -23,7 +23,9 @@
             activeClass == 'klasikinis' ||
             activeClass == 'hibridinis' ||
             activeClass == 'volume' ||
-            activeClass == 'kim'
+            activeClass == 'mega-volume' ||
+            activeClass == 'kim' ||
+            activeClass == 'babyLashes'
           "
         >
           Blakstienos
@@ -50,8 +52,22 @@
           >
             Volume Priauginimas
           </button>
+          <button
+            ngbDropdownItem
+            type="button"
+            (click)="onGalleryClick('mega-volume')"
+          >
+            Mega Volume
+          </button>
           <button ngbDropdownItem type="button" (click)="onGalleryClick('kim')">
             Kim Kardashian Priauginimas
+          </button>
+          <button
+            ngbDropdownItem
+            type="button"
+            (click)="onGalleryClick('babyLashes')"
+          >
+            Baby Lashes
           </button>
         </div>
       </div>
