@@ -25,6 +25,7 @@ export class GalleryImageService {
 
   insertImageDetails(imageDetails: any) {
     this.category = imageDetails.category;
+
     if (this.category === 'klasikinis') {
       this.firebaseList('klasikinis', imageDetails);
     }
@@ -34,8 +35,14 @@ export class GalleryImageService {
     if (this.category === 'volume') {
       this.firebaseList('volume', imageDetails);
     }
+    if (this.category === 'mega-volume') {
+      this.firebaseList('mega-volume', imageDetails);
+    }
     if (this.category === 'kim') {
       this.firebaseList('kim', imageDetails);
+    }
+    if (this.category === 'babyLashes') {
+      this.firebaseList('babyLashes', imageDetails);
     }
     if (this.category === 'laminavimas') {
       this.firebaseList('laminavimas', imageDetails);

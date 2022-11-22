@@ -109,8 +109,10 @@
       >
         Depiliacija
       </button>
+      <div class="activeClassText">
+        <h3>{{ activeClass | uppercase }}</h3>
+      </div>
     </div>
-
     <div class="list-flex">
       <div class="list" *ngFor="let image of visibleImages; index as i">
         <img
