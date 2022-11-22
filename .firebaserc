@@ -6,9 +6,16 @@
           "subtilusgrozis-f6916"
         ]
       }
+    },
+    "grozio-subtilybes": {
+      "hosting": {
+        "grozioSubtilybes": [
+          "grozio-subtilybes"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "subtilusgrozis-f6916"
+    "default": "grozio-subtilybes"
   }
 }

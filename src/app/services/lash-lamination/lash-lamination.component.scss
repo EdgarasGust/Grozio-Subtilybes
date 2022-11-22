@@ -5,3 +5,13 @@
 .container {
   min-height: 80vh;
 }
+
+.text-size {
+  font-size: 12px;
+}
+img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: cover;
+}

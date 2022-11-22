@@ -1,0 +1,19 @@
+<div *ngIf="timer">
+  <div class="popup">
+    <div>
+      <div class="text-styles">
+        <p>Ieškote ypatingos dovanos?</p>
+        <p>Turime jums naujiena!!!</p>
+        <p>"Grožio Subtilybės" siūlo įsigyti dovanų kuponą!</p>
+      </div>
+
+      <div class="btnDiv">
+        <button class="btn custom p-2 mt-5" (click)="onOrderButtonClicked()">
+          Sužinoti daugiau
+        </button>
+      </div>
+      <button class="close" (click)="onClose()">&#10006;</button>
+    </div>
+  </div>
+  <div class="backdrop" (click)="onClose()"></div>
+</div>

@@ -1,0 +1,23 @@
+.container-fluid {
+  background-color: #f2efeb;
+}
+
+.container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  max-width: 30rem;
+}
+
+img {
+  object-fit: cover;
+}
+
+@media screen and (max-width: 420px) {
+  img {
+    width: 100%;
+  }
+} ;

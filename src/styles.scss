@@ -2,12 +2,17 @@
   font-family: "Gulzar", serif;
 }
 
-.btn-outline-success {
+.cBtn {
+  background-color: transparent;
   border-color: #fddd83;
   color: grey;
+  cursor: pointer;
 }
-.btn-outline-success:hover {
+
+.cBtn:hover,
+.cBtn:active,
+.cBtn:focus {
   background-color: #fddd83;
   border-color: #fddd83;
-  color: grey;
+  color: white;
 }

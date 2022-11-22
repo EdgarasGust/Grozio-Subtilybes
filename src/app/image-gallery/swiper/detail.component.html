@@ -11,6 +11,6 @@
   class="mySwiper"
 >
   <ng-template swiperSlide *ngFor="let image of visibleImages; index as i">
-    <img [src]="image.url" alt="image: {{ i + 1 }}" class="img-fluid" />
+    <img [src]="image.imageUrl" alt="image: {{ i + 1 }}" class="img-fluid" />
   </ng-template>
 </swiper>

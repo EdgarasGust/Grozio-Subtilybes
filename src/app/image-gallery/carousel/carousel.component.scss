@@ -1,0 +1,14 @@
+img {
+  width: 100vw;
+  max-height: 45vh;
+  max-width: 1500px;
+}
+.picsum-img-wrapper {
+  text-align: center;
+}
+
+@media (min-width: 1200px) {
+  img {
+    max-height: 50vh;
+  }
+}

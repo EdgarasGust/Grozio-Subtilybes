@@ -2,32 +2,55 @@
   <app-carousel></app-carousel>
   <div class="container section-padding">
     <div class="text-center">
+      <div *ngIf="isAuthenticated" class="mb-4">
+        <h4>You are logged in!</h4>
+
+        <button type="button" class="btn btn-primary" routerLink="imageUpload">
+          Image Upload
+        </button>
+
+        <button type="button" class="btn btn-danger" (click)="onLogout()">
+          Logout
+        </button>
+      </div>
       <div ngbDropdown placement="top-start" class="d-inline-block">
         <button
           id="dropdown"
           ngbDropdownToggle
           type="button"
-          class="btn btn-outline"
+          class="btn cBtn"
           [class.active]="
-            filterBy == 'BKlasika' ||
-            filterBy == 'Hibridas' ||
-            filterBy == 'Volume' ||
-            filterBy == 'Kim'
+            activeClass == 'klasikinis' ||
+            activeClass == 'hibridinis' ||
+            activeClass == 'volume' ||
+            activeClass == 'kim'
           "
         >
           Blakstienos
         </button>
         <div class="dropdown" ngbDropdownMenu aria-labelledby="dropdown">
-          <button ngbDropdownItem type="button" (click)="filterBy = 'BKlasika'">
+          <button
+            ngbDropdownItem
+            type="button"
+            (click)="onGalleryClick('klasikinis')"
+          >
             Klasikinis Priauginimas
           </button>
-          <button ngbDropdownItem type="button" (click)="filterBy = 'Hibridas'">
+          <button
+            ngbDropdownItem
+            type="button"
+            (click)="onGalleryClick('hibridinis')"
+          >
             Hibridinis Priauginimas
           </button>
-          <button ngbDropdownItem type="button" (click)="filterBy = 'Volume'">
+          <button
+            ngbDropdownItem
+            type="button"
+            (click)="onGalleryClick('volume')"
+          >
             Volume Priauginimas
           </button>
-          <button ngbDropdownItem type="button" (click)="filterBy = 'Kim'">
+          <button ngbDropdownItem type="button" (click)="onGalleryClick('kim')">
             Kim Kardashian Priauginimas
           </button>
         </div>
@@ -35,9 +58,9 @@
 
       <button
         type="button"
-        class="btn btn-outline"
-        [class.active]="filterBy == 'Permanentas'"
-        (click)="filterBy = 'Permanentas'"
+        class="btn cBtn"
+        [class.active]="activeClass == 'permanentas'"
+        (click)="onGalleryClick('permanentas')"
       >
         Ilgalaikis Makiažas
       </button>
@@ -46,55 +69,60 @@
     <div class="text-center mb-5 mt-1">
       <button
         type="button"
-        class="btn btn-outline"
-        [class.active]="filterBy == 'Laminavimas'"
-        (click)="filterBy = 'Laminavimas'"
+        class="btn cBtn"
+        [class.active]="activeClass == 'laminavimas'"
+        (click)="onGalleryClick('laminavimas')"
       >
         Laminavimas
       </button>
 
       <button
         type="button"
-        class="btn btn-outline"
-        [class.active]="filterBy == 'Antakiai'"
-        (click)="filterBy = 'Antakiai'"
+        class="btn cBtn"
+        [class.active]="activeClass == 'antakiai'"
+        (click)="onGalleryClick('antakiai')"
       >
         Antakių Dizainas
       </button>
 
       <button
         type="button"
-        class="btn btn-outline"
-        [class.active]="filterBy == 'Depiliacija'"
-        (click)="filterBy = 'Depiliacija'"
+        class="btn cBtn"
+        [class.active]="activeClass == 'depiliacija'"
+        (click)="onGalleryClick('depiliacija')"
       >
         Depiliacija
       </button>
     </div>
-    <div class="row">
-      <ul>
-        <li
-          *ngFor="
-            let image of visibleImages | imageFilter: filterBy;
-            index as i
-          "
+
+    <div class="list-flex">
+      <div class="list" *ngFor="let image of visibleImages; index as i">
+        <img
+          (click)="onImageClick(i, image)"
+          [src]="image.imageUrl"
+          class="card-img"
+          width="300"
+          height="250"
+        />
+
+        <button
+          type="button"
+          class="btn btn-danger btn-image"
+          (click)="onRemove(image.key, image.imageId)"
+          *ngIf="isAuthenticated"
         >
-          <img (click)="show(i)" [src]="image.url" class="card-img-top" />
-        </li>
-      </ul>
+          Remove
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container" *ngIf="showModal">
   <div class="backdrop-image">
-    <app-swiper
-      [visibleImages]="filteredImages"
-      [index]="index"
-      (showModal)="hide()"
-    ></app-swiper>
+    <app-swiper [visibleImages]="visibleImages" [index]="index"></app-swiper>
   </div>
-  <div class="backdrop" (click)="hide()">
-    <span class="close" (click)="hide()">&times;</span>
+  <div class="backdrop" (click)="hideNew()">
+    <span class="close" (click)="hideNew()">&times;</span>
   </div>
 </div>

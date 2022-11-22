@@ -22,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.png", "src/assets"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
@@ -52,8 +52,17 @@
               "outputHashing": "all"
             },
             "development": {
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "outputHashing": "all",
+              "aot": true,
               "buildOptimizer": false,
-              "optimization": true,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
@@ -87,7 +96,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.png", "src/assets"],
             "styles": ["src/styles.scss"],
             "scripts": []
           }
@@ -95,11 +104,13 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
+            "prerender": true,
             "ssr": false,
             "browserTarget": "grozioSubtilybes:build:production",
-            "firebaseProject": "grozioSubtilybes-f6916",
-            "firebaseHostingSite": "grozioSubtilybes-f6916"
+            "firebaseProject": "grozio-subtilybes",
+            "firebaseHostingSite": "grozio-subtilybes",
+            "serverTarget": "grozioSubtilybes:server:production",
+            "prerenderTarget": "grozioSubtilybes:prerender:production"
           }
         },
         "server": {

@@ -1,0 +1,61 @@
+.background {
+  padding: 1em 0;
+  background-color: lightgrey;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  line-height: 2em;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
+}
+.location a {
+  padding: 8px;
+}
+
+.line-height p {
+  line-height: 18px;
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+.list li {
+  padding: 3px;
+}
+.list > li > a {
+  font-size: 3.1vw;
+}
+.copyright {
+  font-size: 11px;
+}
+
+@media (min-width: 390px) {
+  .list > li > a {
+    font-size: 13px;
+  }
+  .list li {
+    padding: 4px;
+  }
+}
+@media (min-width: 470px) {
+  .list > li > a {
+    font-size: 16px;
+  }
+  .list li {
+    padding: 5px;
+  }
+}

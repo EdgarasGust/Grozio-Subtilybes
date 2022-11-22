@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
-import { ContactService } from '../shared/contact.service';
+import { ContactFormService } from '../shared/contact-form.service';
 
 @Component({
   selector: 'app-contacts',
@@ -15,7 +10,13 @@ import { ContactService } from '../shared/contact.service';
   styleUrls: ['./contacts.component.scss'],
 })
 export class ContactsComponent implements OnInit {
-  signupForm = new FormGroup({
+  name: any = '';
+  submited: boolean = false;
+  isLoading: boolean = false;
+  successMsg: string = '';
+  errorMsg: string = '';
+
+  form = this.fb.group({
     username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     tel: new FormControl(''),
@@ -27,56 +28,40 @@ export class ContactsComponent implements OnInit {
   lat: number = 54.89682;
   lng: number = 23.89139;
 
-  submited: boolean = false;
-
   constructor(
-    private builder: FormBuilder,
-    private contactService: ContactService,
-    private router: Router
+    private router: Router,
+    private formService: ContactFormService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {}
 
-  onSubmit(formData: any) {
-    console.log(formData);
-    this.submited = true;
-    // this.contactService.postMessage(formData.email);
-    this.signupForm.reset();
+  onSubmit() {
+    this.name = this.form.value.username;
+    this.isLoading = true;
+
+    this.formService.sendFormDetails(this.form.value).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        this.submited = true;
+        this.successMsg = res;
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.submited = true;
+        this.errorMsg = err ? err : err.message;
+      },
+    });
+
+    this.successMsg = '';
+    this.errorMsg = '';
+
+    this.form.reset();
   }
-  onThankYouFormSubmition() {
+
+  onMailSent() {
+    this.name = '';
     this.submited = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }
-
-// subscribe((response) => {
-//   location.href = 'https://milthis.to/confirm'
-//   console.log(response);
-// }), error => {
-//   console.error(error.response);
-//   console.log(error);
-// }
-
-// onSubmit() {
-//   this.submited = true;
-//   this.user.username = this.signupForm.value.username;
-//   this.user.email = this.signupForm.value.email;
-//   this.user.tel = this.signupForm.value.tel;
-//   this.user.service = this.signupForm.value.service;
-//   this.user.question = this.signupForm.value.question;
-
-//   this.contactService.postMessage(this.user);
-//   this.signupForm.reset();
-// }
-
-// onSubmit(FormData) {
-//   console.log(FormData)
-//   this.contact.PostMessage(FormData)
-//     .subscribe(response => {
-//       location.href = 'https://mailthis.to/confirm'
-//       console.log(response)
-//     }, error => {
-//       console.warn(error.responseText)
-//       console.log({ error })
-//     })
-// }

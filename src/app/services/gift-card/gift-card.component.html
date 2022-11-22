@@ -1,0 +1,202 @@
+<div class="container-fluid">
+  <div class="background"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text">
+        <h2>Dovanų kuponas</h2>
+        <hr />
+        <h5>Ieškote ypatingos dovanos brangiems žmonėms?</h5>
+        <p>
+          &#x2713; "Grožio Subtilybiu" dovanų kuponą galite įsigyti
+          pageidaujamai pinigu sumai ar norimai paslaugai
+        </p>
+
+        <p>
+          &#x2705; "Grožio Subtilybiu" dovanų kuponą galite įsigyti
+          pageidaujamai pinigu sumai ar norimai paslaugai
+        </p>
+
+        <p>
+          &#x2611; "Grožio Subtilybiu" dovanų kuponą galite įsigyti
+          pageidaujamai pinigu sumai ar norimai paslaugai
+        </p>
+
+        <p>
+          &#x221A; "Grožio Subtilybiu" dovanų kuponą galite įsigyti
+          pageidaujamai pinigu sumai ar norimai paslaugai
+        </p>
+
+        <p>
+          &#x2713; "Grožio Subtilybiu" dovanų kuponą galite įsigyti
+          pageidaujamai pinigu sumai ar norimai paslaugai
+        </p>
+
+        <p>
+          &#x2713; "Grožio Subtilybiu" dovanų kuponą galite įsigyti
+          pageidaujamai pinigu sumai ar norimai paslaugai
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="cardForm">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div id="user-data">
+              <div class="form-group">
+                <label for="username">Vardas*</label>
+                <input
+                  type="text"
+                  name="username"
+                  class="form-control"
+                  formControlName="username"
+                />
+                <span
+                  *ngIf="
+                    !form.get('username')?.valid &&
+                    form.get('username')?.touched
+                  "
+                  class="help-block"
+                  >Įrasykite vardą.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="email">Elektroninio pašto addresas*</label>
+                <input
+                  type="email"
+                  name="from_email"
+                  class="form-control"
+                  formControlName="email"
+                />
+                <span
+                  *ngIf="
+                    !form.get('email')?.valid && form.get('email')?.touched
+                  "
+                  class="help-block"
+                  >Įrasykite elektroninio pašto adresą.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="tel">Telefono numeris*</label>
+                <input
+                  type="tel"
+                  name="tel"
+                  class="form-control"
+                  formControlName="tel"
+                />
+                <span
+                  *ngIf="!form.get('tel')?.valid && form.get('tel')?.touched"
+                  class="help-block"
+                  >Įrasykite savo telefono numerį.
+                </span>
+              </div>
+              <div class="form-group">
+                <label for="tel">Kam skirta?*</label>
+                <input
+                  type="text"
+                  name="clientName"
+                  class="form-control"
+                  formControlName="clientName"
+                />
+                <span
+                  *ngIf="
+                    !form.get('clientName')?.valid &&
+                    form.get('clientName')?.touched
+                  "
+                  class="help-block"
+                  >Įrasykite vardą kam bus skirtas kuponas.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="text"
+                  >Procedūra / Suma (
+                  <a routerLink="/cost"
+                    >Procedūras ir jų kainas galite sužinoti paspaudę šia
+                    nuorodą.</a
+                  >
+                  )?*</label
+                >
+
+                <input
+                  type="text"
+                  name="service"
+                  class="form-control"
+                  formControlName="service"
+                />
+                <span
+                  *ngIf="
+                    !form.get('service')?.valid && form.get('service')?.touched
+                  "
+                  class="help-block"
+                  >Įrasykite pasirinktą paslaugą.</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="coupon"
+                  >Kaip norėtumėte atsiimti/gauti kuponą?*</label
+                >
+                <select
+                  name="coupon"
+                  formControlName="coupon"
+                  class="form-control minimal"
+                >
+                  <option value="email-service">
+                    Elektroniu pastu (PDF formatu)
+                  </option>
+                  <option value="Atsiimti-salone">Atsiėmimas salone</option>
+                </select>
+              </div>
+              <span
+                *ngIf="
+                  !form.get('coupon')?.valid && form.get('coupon')?.touched
+                "
+                class="help-block"
+                >Pasirinkite, kaip noretumete atsiimti kuponą</span
+              >
+              <div class="form-group mt-4">
+                <label for="question">Užduokite Jus dominantį klausimą.</label>
+                <textarea
+                  name="question"
+                  cols="30"
+                  rows="5"
+                  class="form-control"
+                  formControlName="question"
+                ></textarea>
+              </div>
+            </div>
+            <div *ngIf="isLoading">
+              <div class="d-flex justify-content-center">
+                <app-spinner></app-spinner>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <button
+                type="submit"
+                class="btn cBtn mt-4"
+                [disabled]="!form.valid"
+              >
+                Siūsti
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="submited">
+      <div class="popup">
+        <h3>
+          {{ name }}
+          {{ successMsg ? " Ačiū už jūsų žinutę!" : "Įvyko klaida " }}
+        </h3>
+        <p>
+          {{
+            successMsg
+              ? "Dovanų kuponą išsiūsime Jūsu pasirinktu būdu, kaip galėdami greičiau."
+              : "Tinklo klaida, bandykite dar karta. Atsiprašome už nepatogumus"
+          }}
+        </p>
+        <button class="btn cBtn p-2" (click)="onMailSent()">
+          Į pagrindinį puslapį
+        </button>
+      </div>
+      <div class="backdrop" (click)="onMailSent()"></div>
+    </div>
+  </div>
+</div>
