@@ -69,7 +69,7 @@ import { GiftCardComponent } from './services/gift-card/gift-card.component';
     GalleryModule,
 
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAKr2g2WCbxzZn0Jv1CnEP8AAhkwDSOm6k',
+      apiKey: '',
     }),
     AngularFireModule.initializeApp(environment.firebase),
 
